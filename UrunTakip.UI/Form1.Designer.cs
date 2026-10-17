@@ -29,6 +29,7 @@ namespace UrunTakip.UI
             dgvProducts = new DataGridView();
             btnListProduct = new Button();
             textBox1 = new TextBox();
+            btnDelete = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -93,6 +94,7 @@ namespace UrunTakip.UI
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(txtName);
             groupBox1.Controls.Add(label3);
@@ -103,14 +105,14 @@ namespace UrunTakip.UI
             groupBox1.Controls.Add(txtStock);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(244, 159);
+            groupBox1.Size = new Size(244, 209);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "Ürün Ekle";
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(107, 130);
+            btnUpdate.Location = new Point(87, 130);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 7;
@@ -145,6 +147,16 @@ namespace UrunTakip.UI
             textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(169, 130);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 8;
+            btnDelete.Text = "Sil";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -176,5 +188,6 @@ namespace UrunTakip.UI
         private Button btnListProduct;
         private TextBox textBox1;
         private Button btnUpdate;
+        private Button btnDelete;
     }
 }

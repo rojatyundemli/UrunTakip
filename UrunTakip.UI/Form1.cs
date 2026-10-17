@@ -10,7 +10,7 @@ namespace UrunTakip.UI
 {
     public partial class Form1 : Form
     {
-        
+
 
         public Form1()
         {
@@ -19,7 +19,8 @@ namespace UrunTakip.UI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            btnUpdate.Visible = false;
+            btnDelete.Visible = false;
         }
 
         private void btnUrunKontrol_Click(object sender, EventArgs e)
@@ -122,13 +123,15 @@ namespace UrunTakip.UI
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProducts.CurrentCell != null  && dgvProducts.CurrentRow.Cells[0].Value != null)
-                
+            if (dgvProducts.CurrentCell != null && dgvProducts.CurrentRow.Cells[0].Value != null)
+
             {
-                
+                btnUpdate.Visible = true;
+                btnDelete.Visible = true;
 
 
-              
+
+
                 String Name = dgvProducts.CurrentRow.Cells[1].Value.ToString();
                 decimal Price = Convert.ToDecimal(dgvProducts.CurrentRow.Cells[2].Value);
                 int Stock = Convert.ToInt32(dgvProducts.CurrentRow.Cells[3].Value);
@@ -136,8 +139,19 @@ namespace UrunTakip.UI
                 txtName.Text = Name;
                 txtPrice.Text = Price.ToString("0.00"); // Fiyatý 10.50 gibi düzgün formatta gösterir
                 txtStock.Text = Stock.ToString();
-               
-               
+
+
+            }
+            else {
+                txtName.Text = "";
+                txtPrice.Text = "";
+                txtStock.Text = "";
+
+
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+
+
             }
         }
 
@@ -146,7 +160,7 @@ namespace UrunTakip.UI
 
             if (dgvProducts.CurrentCell != null && dgvProducts.CurrentRow.Cells[0].Value != null)
             {
-              
+
 
 
                 int Id = Convert.ToInt32(dgvProducts.CurrentRow.Cells[0].Value);
@@ -160,13 +174,51 @@ namespace UrunTakip.UI
                 product.Name = Name;
                 product.Price = Price;
                 product.Stock = Stock;
-                
+
                 ProductService service = new ProductService();
                 String resultMessage = service.UpdateProductServise(product);
 
                 MessageBox.Show(resultMessage);
-                
+
+
+                txtName.Text = "";
+                txtPrice.Text = "";
+                txtStock.Text = "";
+
+
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            if (dgvProducts.CurrentCell != null && dgvProducts.CurrentRow.Cells[0].Value != null)
+            {
+
+
+                int Id = Convert.ToInt32(dgvProducts.CurrentRow.Cells[0].Value);
+                
+
+          
+                ProductService service = new ProductService();
+                String resultMessage = service.DeleteProductService(Id);
+
+                MessageBox.Show(resultMessage);
+                btnUpdate.Visible = false;
+
+                txtName.Text = "";
+                txtPrice.Text = "";
+                txtStock.Text = "";
+
+                btnDelete.Visible = false;
+                btnUpdate.Visible = false;
+
+            }
+
+
         }
     }
 }
