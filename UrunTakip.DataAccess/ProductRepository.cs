@@ -74,6 +74,30 @@ namespace UrunTakip.DataAccess
 
         }
 
+        public bool DeleteProduct(int Id) 
+        {
+            String query = @"Delete From dbo.Products Where Id = @ProductId";
+            using (SqlConnection connection = new SqlConnection(_connectionString)) 
+            {
+                using (SqlCommand command = new SqlCommand(query, connection)) 
+                {
+              
+
+                    command.Parameters.AddWithValue("@ProductId",Id);
+
+                    connection.Open();
+
+
+                    int affectedRows = command.ExecuteNonQuery();
+
+                    return affectedRows > 0;
+
+                }
+            
+            }
+        
+        }
+
        
 
         // Veritabanındaki bütün ürünleri getir

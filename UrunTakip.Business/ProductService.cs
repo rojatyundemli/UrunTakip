@@ -96,6 +96,31 @@ namespace UrunTakip.Business
         }
 
 
+        public string DeleteProductService(int id)
+        {
+            if (id <= 0)
+            {
+                return "Geçerli bir ürün seçmelisiniz.";
+            }
+
+            try
+            {
+                ProductRepository repository = new ProductRepository();
+
+                bool deleted = repository.DeleteProduct(id);
+
+                if (deleted)
+                {
+                    return "Ürün başarıyla silindi.";
+                }
+
+                return "Silinecek ürün bulunamadı.";
+            }
+            catch (Exception ex)
+            {
+                return "Silme sırasında hata oluştu: " + ex.Message;
+            }
+        }
 
         public List<Product> GetAllProducts()
         {
