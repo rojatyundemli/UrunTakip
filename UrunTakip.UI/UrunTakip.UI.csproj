@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Krypton.Toolkit" Version="105.26.7.201" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UrunTakip.Business\UrunTakip.Business.csproj" />
     <ProjectReference Include="..\UrunTakip.Entities\UrunTakip.Entities.csproj" />
   </ItemGroup>

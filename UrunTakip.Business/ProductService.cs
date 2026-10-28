@@ -111,10 +111,10 @@ namespace UrunTakip.Business
 
                 if (deleted)
                 {
-                    return "Ürün başarıyla silindi.";
+                    return "Kayıt başarıyla silindi.";
                 }
 
-                return "Silinecek ürün bulunamadı.";
+                return "Silinecek Kayıt bulunamadı.";
             }
             catch (Exception ex)
             {

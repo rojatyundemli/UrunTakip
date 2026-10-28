@@ -13,8 +13,8 @@ namespace UrunTakip.DataAccess
         public bool Add(Product product)
         {
             string query = @"
-                INSERT INTO dbo.Products (Name, Price, Stock)
-                VALUES (@Name, @Price, @Stock);";
+                INSERT INTO dbo.Products (Name, Price)
+                VALUES (@Name, @Price);";
 
             using (SqlConnection connection =
                    new SqlConnection(_connectionString))
@@ -35,9 +35,7 @@ namespace UrunTakip.DataAccess
                     priceParameter.Scale = 2;
                     priceParameter.Value = product.Price;
 
-                    command.Parameters.Add(
-                        "@Stock", SqlDbType.Int
-                    ).Value = product.Stock;
+                    
 
                     connection.Open();
 
@@ -51,7 +49,7 @@ namespace UrunTakip.DataAccess
 
         public bool UpdateProduct (Product product)
         {
-            String query = @"Update dbo.Products Set Name = @ProductName, Price = @ProductPrice, Stock = @ProductStock Where Id = @ProductId";
+            String query = @"Update dbo.Products Set Name = @ProductName, Price = @ProductPrice  Where Id = @ProductId";
 
             using (SqlConnection connection =
        new SqlConnection(_connectionString))
@@ -62,7 +60,7 @@ namespace UrunTakip.DataAccess
                     command.Parameters.AddWithValue("@ProductId", product.Id);
                     command.Parameters.AddWithValue("@ProductName", product.Name);
                     command.Parameters.AddWithValue("@ProductPrice", product.Price);
-                    command.Parameters.AddWithValue("@ProductStock", product.Stock);
+                   
 
                     connection.Open();
 
