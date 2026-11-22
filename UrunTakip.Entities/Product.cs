@@ -14,7 +14,24 @@ namespace UrunTakip.Entities
 
         public decimal Price { get; set; }
 
-        public int Stock { get; set; }
+        public decimal Stock { get; set; }
+
+        public string ProductCode { get; set; } = "";
+
+        public decimal PurchasePrice { get; set; }
+
+        public int? MainUnitId { get; set; }
+
+        public string? MainUnitName { get; set; }
+
+        public string Category { get; set; } = "";
+
+        public string Barcode { get; set; } = "";
+
+        public decimal MinStock { get; set; }
+        public decimal MaxStock { get; set; }
+
+        public string Descraption { get; set; } = "";
 
     }
 }
