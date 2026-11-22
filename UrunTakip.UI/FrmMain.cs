@@ -76,6 +76,31 @@ namespace UrunTakip.UI
         {
             OpenModule("Supplier", "Tedarikçi Yönetimi", () => new FormSupplier());
         }
+
+        private void tabModules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_PurchaseOrders_Click(object sender, EventArgs e)
+        {
+            OpenModule("Purchase_Orders", "Sipariş Yönetimi", () => new FormPurchaseOrder());
+        }
+
+        private void btn_GoofReciept_Click(object sender, EventArgs e)
+        {
+            OpenModule("Goods_Receipt", "Mal Kabul", () => new FormGoodsReceipt());
+        }
+
+        private void btn_Customer_Click(object sender, EventArgs e)
+        {
+            OpenModule("Customer", "Müşteri Yönetimi", () => new FormCustomer());
+        }
+
+        private void btn_salesOrder_Click(object sender, EventArgs e)
+        {
+            OpenModule("Sales_Orders", "Satış Siparişleri", () => new FormSalesOrders());
+        }
     }
 
 
